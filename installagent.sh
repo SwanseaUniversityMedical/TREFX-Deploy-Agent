@@ -91,3 +91,8 @@ echo "STEP 5 : Start Docker Compose"
 (cd $REPO_PATH && docker compose up -d)
 
 docker ps -a
+
+
+
+#debug
+cat $REPO_PATH/.env
