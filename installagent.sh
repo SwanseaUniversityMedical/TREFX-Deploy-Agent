@@ -92,7 +92,9 @@ echo "STEP 5 : Start Docker Compose"
 
 docker ps -a
 
+echo ""
+echo "-----------------------------------------------------"
+echo "|              TREFX Agent Installer    FINISHED     |"
+echo "-----------------------------------------------------"
+echo ""
 
-
-#debug
-cat $REPO_PATH/.env
