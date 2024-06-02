@@ -1,5 +1,12 @@
 #!/bin/bash
 
+# Tell user what this is
+echo ""
+echo "-----------------------------------------------------"
+echo "|              TREFX Agent Installer                |"
+echo "-----------------------------------------------------"
+echo ""
+
 # Define the subdirectory, file path, and repository URL
 SUBDIR="./trefx-agent"
 FILE_PATH="$SUBDIR/trefx-agent-id"
