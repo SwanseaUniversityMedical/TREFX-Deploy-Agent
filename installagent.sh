@@ -75,6 +75,8 @@ echo "Downloading and running configuration tool"
 
 docker pull harbor.ukserp.ac.uk:443/dare-trefx/deployconfig:latest
 
+echo $http_proxy
+
 docker run --name configure --rm \
     -v $(pwd)/$REPO_PATH:/env \
     -v $(pwd)/$SECRET_PATH:/secret  \
