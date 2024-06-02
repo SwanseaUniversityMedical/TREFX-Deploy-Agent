@@ -73,7 +73,7 @@ fi
 
 echo "Downloading and running configuration tool"
 
-docker pull harbor.ukserp.ac.uk:443/dare-trefx/deployconfig:latest
+docker pull harbor.ukserp.ac.uk:443/dare-trefx/deployconfig:1.0.0
 
 docker run --name configure --rm \
     -v $(pwd)/$REPO_PATH:/env \
@@ -82,7 +82,7 @@ docker run --name configure --rm \
     -e sourceEnv=/env/.env-template \
     -e targetEnv=/env/.env \
     -e http_proxy=$http_proxy \
-    harbor.ukserp.ac.uk:443/dare-trefx/deployconfig:latest
+    harbor.ukserp.ac.uk:443/dare-trefx/deployconfig:1.0.0
 
 # Step 5 start docker compose
 echo "STEP 5 : Start Docker Compose"
