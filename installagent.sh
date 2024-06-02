@@ -11,7 +11,7 @@ echo ""
 SUBDIR="./trefx-agent"
 SECRET_PATH="$SUBDIR/secrets"
 FILE_PATH="$SUBDIR/trefx-agent-id"
-REPO_URL="https://github.com/SwanseaUniversityMedical/DARE-TREFX-Environment1.git"
+REPO_URL="https://github.com/SwanseaUniversityMedical/TREFX-Deploy-Agent.git"
 REPO_PATH="$SUBDIR/agent"
 
 # Create the subdirectory if it does not exist
@@ -73,9 +73,7 @@ fi
 
 echo "Downloading and running configuration tool"
 
-docker pull harbor.ukserp.ac.uk:443/dare-trefx/deployconfig:latest
-
-echo $http_proxy
+docker pull harbor.ukserp.ac.uk:443/dare-trefx/deployconfig:latestls 
 
 docker run --name configure --rm \
     -v $(pwd)/$REPO_PATH:/env \
