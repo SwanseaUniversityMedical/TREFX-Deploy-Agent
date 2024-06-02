@@ -456,7 +456,7 @@ services:
       hasura-agent:
         condition: service_healthy
   hasura-agent:
-    image: hasura/graphql-data-connector
+    image: hasura/graphql-data-connector:v2.36.4
     container_name: hasura-agent
     restart: always
     ports:
