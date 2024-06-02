@@ -9,6 +9,7 @@ echo ""
 
 # Define the subdirectory, file path, and repository URL
 SUBDIR="./trefx-agent"
+SECRET_PATH="$SUBDIR/secrets"
 FILE_PATH="$SUBDIR/trefx-agent-id"
 REPO_URL="https://github.com/SwanseaUniversityMedical/DARE-TREFX-Environment1.git"
 REPO_PATH="$SUBDIR/agent"
@@ -51,7 +52,23 @@ if [ ! -d "$REPO_PATH/.git" ]; then
     git clone $REPO_URL $REPO_PATH
     echo "Repository cloned into $SUBDIR."
 else
-    (cd $REPO_PATH && git config pull.rebase false)
-    (cd $REPO_PATH && git pull)
+    (cd $REPO_PATH && git config pull.rebase false && git pull)
     echo "Repository in $SUBDIR updated."
 fi
+
+# Step 5: Set .env file correctly
+
+if [ ! -d "$SECRET_PATH" ]; then
+    mkdir -p "$SECRET_PATH"
+    echo "Subdirectory $SECRET_PATH created."
+else
+    echo "Subdirectory $SECRET_PATH already exists."
+fi
+
+docker run --name configure --rm \
+    -v $REPO_PATH:/env \
+    -v $SECRET_PATH:/secret  \
+    -e passwordDir=/secret \
+    -e sourceEnv=/env/.env-template \
+    -e targetEnv=/env/.env \
+    harbor.ukserp.ac.uk:443/dare-trefx/deployconfig:latest
