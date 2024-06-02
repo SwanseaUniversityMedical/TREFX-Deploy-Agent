@@ -83,3 +83,12 @@ docker run --name configure --rm \
     -e targetEnv=/env/.env \
     -e http_proxy=$http_proxy \
     harbor.ukserp.ac.uk:443/dare-trefx/deployconfig:latest
+
+
+# Step 5 start docker compose
+echo "STEP 5 : Start Docker Compose"
+
+(cd $REPO_PATH && docker compose down)
+(cd $REPO_PATH && docker compose up -d)
+
+docker ps -a
