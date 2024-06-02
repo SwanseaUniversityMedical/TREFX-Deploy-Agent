@@ -73,7 +73,7 @@ fi
 
 echo "Downloading and running configuration tool"
 
-docker pull harbor.ukserp.ac.uk:443/dare-trefx/deployconfig:latestls 
+docker pull harbor.ukserp.ac.uk:443/dare-trefx/deployconfig:latest
 
 docker run --name configure --rm \
     -v $(pwd)/$REPO_PATH:/env \
