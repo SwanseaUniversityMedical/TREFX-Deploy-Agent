@@ -79,7 +79,7 @@ docker run --name configure --rm \
     -v $(pwd)/$REPO_PATH:/env \
     -v $(pwd)/$SECRET_PATH:/secret  \
     -e passwordDir=/secret \
-    -e sourceEnv=/env/.env-template \
+    -e sourceEnv=/env/.env.template \
     -e targetEnv=/env/.env \
     -e http_proxy=$http_proxy \
     harbor.ukserp.ac.uk:443/dare-trefx/deployconfig:1.0.0
