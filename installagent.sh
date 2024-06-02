@@ -24,11 +24,13 @@ fi
 
 
 # Step 1: Create a local file if an environment variable (AGENT_ID) is set and write the value to the file
+echo "STEP 1 : Get Agent ID"
 if [ ! -z "$AGENT_ID" ]; then
     echo "$AGENT_ID" > $FILE_PATH
     echo "Environment variable AGENT_ID is set. Value written to $FILE_PATH."
 else
-    # Step 2: If AGENT_ID is not set and the file already exists, read the value from the file and set the variable
+    echo "STEP 1b : Get Agent ID from file"
+    # Step 1b: If AGENT_ID is not set and the file already exists, read the value from the file and set the variable
     if [ -f "$FILE_PATH" ]; then
         AGENT_ID=$(cat $FILE_PATH)
         export AGENT_ID
@@ -36,7 +38,9 @@ else
     fi
 fi
 
-# Step 3: Test if AGENT_ID is set, if not display an error and stop
+# Step 2: Test if AGENT_ID is set, if not display an error and stop
+echo "STEP 2 : Check we have an Agent ID"
+
 if [ -z "$AGENT_ID" ]; then
     echo "Error: Environment variable AGENT_ID is not set and $FILE_PATH does not exist."
     exit 1
@@ -45,8 +49,9 @@ else
 fi
 
 
-# Step 4: Clone Git
-# Clone the repository if it does not exist, otherwise pull the latest changes
+# Step 3: Clone Git
+echo "STEP 3 : Clone the repository if it does not exist, otherwise pull the latest changes"
+
 echo "Plan to clone $REPO_URL"
 if [ ! -d "$REPO_PATH/.git" ]; then
     git clone $REPO_URL $REPO_PATH
@@ -56,7 +61,8 @@ else
     echo "Repository in $SUBDIR updated."
 fi
 
-# Step 5: Set .env file correctly
+# Step 4: Set .env file correctly
+echo "STEP 4 : Set configuration based on Agent ID"
 
 if [ ! -d "$SECRET_PATH" ]; then
     mkdir -p "$SECRET_PATH"
@@ -65,9 +71,10 @@ else
     echo "Subdirectory $SECRET_PATH already exists."
 fi
 
+echo "Downloading and running configuration tool"
 docker run --name configure --rm \
-    -v $REPO_PATH:/env \
-    -v $SECRET_PATH:/secret  \
+    -v $(pwd)/$REPO_PATH:/env \
+    -v $(pwd)/$SECRET_PATH:/secret  \
     -e passwordDir=/secret \
     -e sourceEnv=/env/.env-template \
     -e targetEnv=/env/.env \
