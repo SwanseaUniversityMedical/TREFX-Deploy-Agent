@@ -47,11 +47,11 @@ fi
 # Step 4: Clone Git
 # Clone the repository if it does not exist, otherwise pull the latest changes
 echo "Plan to clone $REPO_URL"
-git config pull.rebase false
 if [ ! -d "$REPO_PATH/.git" ]; then
     git clone $REPO_URL $REPO_PATH
     echo "Repository cloned into $SUBDIR."
 else
+    (cd $REPO_PATH && git config pull.rebase false)
     (cd $REPO_PATH && git pull)
     echo "Repository in $SUBDIR updated."
 fi
