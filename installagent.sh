@@ -23,6 +23,8 @@ else
 fi
 
 
+#AGENT_ID == URL TO JSON for override
+#AGENT_TYPE == string for foleder of what tpye of projets
 # Step 1: Create a local file if an environment variable (AGENT_ID) is set and write the value to the file
 echo "STEP 1 : Get Agent ID"
 if [ ! -z "$AGENT_ID" ]; then
@@ -47,6 +49,14 @@ if [ -z "$AGENT_ID" ]; then
 else
     echo "Environment variable AGENT_ID is set to '$AGENT_ID'."
 fi
+
+if [ -z "$AGENT_TYPE" ]; then
+    echo "Error: Environment variable AGENT_TYPE not set."
+    exit 1
+else
+    echo "Environment variable AGENT_TYPE is set to '$AGENT_TYPE'."
+fi
+
 
 
 # Step 3: Clone Git
@@ -76,7 +86,7 @@ echo "Downloading and running configuration tool"
 docker pull harbor.ukserp.ac.uk:443/dare-trefx/deployconfig:1.0.0
 
 docker run --name configure --rm \
-    -v $(pwd)/$REPO_PATH:/env \
+    -v $(pwd)/$REPO_PATH/deployments/$AGENT_TYPE:/env \
     -v $(pwd)/$SECRET_PATH:/secret  \
     -e passwordDir=/secret \
     -e sourceEnv=/env/.env.template \
@@ -87,8 +97,8 @@ docker run --name configure --rm \
 # Step 5 start docker compose
 echo "STEP 5 : Start Docker Compose"
 
-(cd $REPO_PATH && docker compose down)
-(cd $REPO_PATH && docker compose up -d)
+(cd $REPO_PATH/deployments/$AGENT_TYPE && docker compose down)
+(cd $REPO_PATH/deployments/$AGENT_TYPE && docker compose up -d)
 
 docker ps -a
 
