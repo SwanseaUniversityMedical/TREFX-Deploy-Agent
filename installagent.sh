@@ -98,12 +98,12 @@ docker run --name configure --rm \
     harbor.ukserp.ac.uk:443/dare-trefx/deployconfig:1.0.0
 
 # Step 5 start docker compose
-echo "STEP 5 : Start Docker Compose"
+#echo "STEP 5 : Start Docker Compose"
 
-(cd $REPO_PATH/deployments/$AGENT_TYPE && docker compose down)
-(cd $REPO_PATH/deployments/$AGENT_TYPE && docker compose up -d)
+#(cd $REPO_PATH/deployments/$AGENT_TYPE && docker compose down)
+#(cd $REPO_PATH/deployments/$AGENT_TYPE && docker compose up -d)
 
-docker ps -a
+#docker ps -a
 
 echo ""
 echo "-----------------------------------------------------"
