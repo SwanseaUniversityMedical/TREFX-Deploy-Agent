@@ -90,7 +90,7 @@ docker pull harbor.ukserp.ac.uk:443/dare-trefx/deployconfig:1.0.0
 cd $REPO_PATH
 
 docker run --name configure --rm \
-    -v $(pwd)/$REPO_PATH/deployments/$AGENT_TYPE:/env \
+    -v $(pwd)/deployments/$AGENT_TYPE:/env \
     -v $(pwd)/$SECRET_PATH:/secret  \
     -e passwordDir=/secret \
     -e sourceEnv=/env/.env.template \
