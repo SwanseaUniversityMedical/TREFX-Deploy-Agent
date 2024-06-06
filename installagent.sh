@@ -102,8 +102,8 @@ docker run --name configure --rm \
 # Step 5 start docker compose
 echo "STEP 5 : Start Docker Compose"
 
-(cd /deployments/$AGENT_TYPE && docker compose down)
-(cd /deployments/$AGENT_TYPE && docker compose up -d)
+(cd deployments/$AGENT_TYPE && docker compose down)
+(cd deployments/$AGENT_TYPE && docker compose up -d)
 
 docker ps -a
 
