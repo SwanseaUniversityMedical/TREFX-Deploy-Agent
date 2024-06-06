@@ -94,6 +94,7 @@ docker run --name configure --rm \
     -e sourceEnv=/env/.env.template \
     -e targetEnv=/env/.env \
     -e http_proxy=$http_proxy \
+	-e url=$AGENT_ID \
     harbor.ukserp.ac.uk:443/dare-trefx/deployconfig:1.0.0
 
 # Step 5 start docker compose
