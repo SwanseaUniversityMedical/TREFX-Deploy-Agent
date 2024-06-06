@@ -102,7 +102,7 @@ docker run --name configure --rm \
 #(cd $REPO_PATH/deployments/$AGENT_TYPE && docker compose down)
 #(cd $REPO_PATH/deployments/$AGENT_TYPE && docker compose up -d)
 
-#docker ps -a
+docker ps -a
 
 echo ""
 echo "-----------------------------------------------------"
