@@ -98,12 +98,12 @@ docker run --name configure --rm \
     -e http_proxy=$http_proxy \
 	-e url=$AGENT_ID \
     harbor.ukserp.ac.uk:443/dare-trefx/deployconfig:1.0.0
-cd ..
+
 # Step 5 start docker compose
 echo "STEP 5 : Start Docker Compose"
 
-(cd $REPO_PATH/deployments/$AGENT_TYPE && docker compose down)
-(cd $REPO_PATH/deployments/$AGENT_TYPE && docker compose up -d)
+(cd /deployments/$AGENT_TYPE && docker compose down)
+(cd /deployments/$AGENT_TYPE && docker compose up -d)
 
 docker ps -a
 
