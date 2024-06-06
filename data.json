@@ -5,7 +5,7 @@
     "URLSettingsFrontEndQueryImageSQL": "ukserp/runsql:1.0.0",
     "UINAME": "TRE FX",
     "verUI": "1.185.8",
-    "verUI1": "1.129.9",
+    "verAPI": "1.129.9",
     "SubmissionMinioAdminUser": "minio",
     "SubmissionMinioAdminPassword": "*15",
     "keycloakUrl": "auth2.ukserp.ac.uk",
