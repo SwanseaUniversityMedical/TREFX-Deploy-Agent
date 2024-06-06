@@ -87,6 +87,8 @@ echo "Downloading and running configuration tool"
 
 docker pull harbor.ukserp.ac.uk:443/dare-trefx/deployconfig:1.0.0
 
+cd $REPO_PATH
+
 docker run --name configure --rm \
     -v $(pwd)/$REPO_PATH/deployments/$AGENT_TYPE:/env \
     -v $(pwd)/$SECRET_PATH:/secret  \
@@ -96,7 +98,7 @@ docker run --name configure --rm \
     -e http_proxy=$http_proxy \
 	-e url=$AGENT_ID \
     harbor.ukserp.ac.uk:443/dare-trefx/deployconfig:1.0.0
-
+cd ..
 # Step 5 start docker compose
 #echo "STEP 5 : Start Docker Compose"
 
