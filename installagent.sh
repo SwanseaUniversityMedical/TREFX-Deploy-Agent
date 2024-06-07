@@ -66,11 +66,11 @@ echo "Plan to clone $REPO_URL"
 if [ ! -d "$REPO_PATH/.git" ]; then
     git clone $REPO_URL $REPO_PATH
     echo "Repository cloned into $SUBDIR."
-	(cd $REPO_PATH && git checkout John/addSub )
+	#(cd $REPO_PATH && git checkout John/addSub )
 else
     (cd $REPO_PATH && git config pull.rebase false && git pull)
     echo "Repository in $SUBDIR updated."
-	(cd $REPO_PATH && git checkout John/addSub )
+	#(cd $REPO_PATH && git checkout John/addSub )
 fi
 
 # Step 4: Set .env file correctly
