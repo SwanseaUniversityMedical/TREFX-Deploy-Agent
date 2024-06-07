@@ -1,0 +1,16 @@
+{
+    "useproxy": true,
+    "proxyurl": "http://192.168.10.15:8080",
+    "URLSettingsFrontEndQueryImage": "harbor.ukserp.ac.uk/dare-trefx/control-tre-hasura:1.34.1",
+    "URLSettingsFrontEndQueryImageSQL": "ukserp/runsql:1.0.0",
+    "UINAME": "TRE FX",
+    "verUI": "1.185.8",
+    "verAPI": "1.129.9",
+    "SubmissionMinioAdminUser": "minio",
+    "SubmissionMinioAdminPassword": "*15",
+    "keycloakUrl": "auth2.ukserp.ac.uk",
+    "keycloakMainRealm": "Dare-Control",
+    "SubmissionAPIClientSecret": "krDQH6jFM1piGvTRnzCC2UGFUZuTZDkJ",
+    "SubmissionUIClientSecret": "PUykmXOAkyYhIdKzpYz0anPlQ74gUBTz",
+    "submit": true
+}
